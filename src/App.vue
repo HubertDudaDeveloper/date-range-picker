@@ -1,25 +1,39 @@
 <template>
-  <DatePicker
-    :allowedTypes="[
-      'year',
-      'quarter',
-      'month',
-      'week',
-      'day',
-      'hour',
-      'minute',
-      'date from-to',
-      'date-from',
-      'date-to',
-    ]"
-    :disabledTypes="['week']"
-    :min="1"
-    :max="100"
-    minDate="2022-01-01"
-    maxDate="2025-12-31"
-  />
+  <main class="app">
+    <ShowcaseView
+      v-for="example in datePickerExamples"
+      :key="example.id"
+      :title="example.title"
+      :datePickerProps="example.datePicker"
+    />
+  </main>
 </template>
 
 <script setup lang="ts">
-import DatePicker from './components/DatePicker.vue'
+import ShowcaseView from './components/ShowcaseView.vue'
+import datePickerExamples from './demo/datePickerExamples.ts'
+
 </script>
+
+<style scoped lang="scss">
+.app {
+  display: flex;
+  flex-direction: column;
+
+  &:nth-child(1) {
+    background-color: paleturquoise;
+  }
+
+  &:nth-child(2) {
+    background-color: palevioletred;
+  }
+
+  &:nth-child(3) {
+    background-color: palegoldenrod;
+  }
+
+  &:nth-child(4) {
+    background-color: palegreen;
+  }
+}
+</style>

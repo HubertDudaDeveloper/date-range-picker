@@ -16,7 +16,7 @@
     <input
       v-if="isNumericType"
       type="number"
-      v-model.number="value"
+      v-model.number="numericValue"
       :min="props.min"
       :max="props.max"
       data-testid="number-value"
@@ -42,31 +42,23 @@
     />
 
     <!-- podgląd danych -->
-    <pre data-testid="json-output">{{ output }}</pre>
+    <pre data-testid="json-output"><code>{{ output }}</code></pre>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watchEffect } from 'vue'
+import { computed, ref, watch } from 'vue'
+import { IDatePickerProps, ENumericDateTypes } from '@/types/DatePicker.ts'
 
-const props = defineProps<{
-  allowedTypes: string[]
-  disabledTypes: string[]
-  min?: number
-  max?: number
-  minDate?: string
-  maxDate?: string
-}>()
+const props = defineProps<IDatePickerProps>()
 
 const rangeType = ref('')
-const value = ref(1)
+const numericValue = ref(1)
 const dateFrom = ref('')
 const dateTo = ref('')
 
-// TODO: rozważyć podział typu na enum
-
 const isNumericType = computed(() =>
-  ['year', 'quarter', 'month', 'week', 'day', 'hour', 'minute'].includes(rangeType.value),
+  Object.values(ENumericDateTypes).includes(rangeType.value),
 )
 
 const showFrom = computed(() => ['date from-to', 'date-from'].includes(rangeType.value))
@@ -77,7 +69,7 @@ const output = computed(() => {
   return JSON.stringify(
     {
       type: rangeType.value,
-      ...(isNumericType.value ? { value: value.value } : {}),
+      ...(isNumericType.value ? { value: numericValue.value } : {}),
       ...(showFrom.value ? { dateFrom: dateFrom.value } : {}),
       ...(showTo.value ? { dateTo: dateTo.value } : {}),
     },
@@ -86,10 +78,34 @@ const output = computed(() => {
   )
 })
 
-// debug — do usunięcia przed produkcją
-watchEffect(() => {
-  if (rangeType.value) {
-    console.log('[DEBUG] current output:', output.value)
+// Prevent wrong values for numeric input
+watch(numericValue, (newValue, oldValue) => {
+  if (newValue < props.min || newValue > props.max) {
+    numericValue.value = oldValue;
+  }
+})
+
+watch(dateFrom, (newValue, oldValue) => {
+  const newValueDate = new Date(newValue);
+  const minDateValue = new Date(props.minDate);
+  const maxDateValue = new Date(props.maxDate);
+
+  if (isNaN(newValueDate.getTime()) || newValueDate < minDateValue || newValueDate > maxDateValue) {
+    numericValue.value = oldValue;
   }
 })
 </script>
+
+<style lang="scss" scoped>
+ .date-range-picker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    border: 1px solid black;
+    border-radius: 8px;
+    min-width: 320px;
+    background-color: white;
+ }
+</style>
