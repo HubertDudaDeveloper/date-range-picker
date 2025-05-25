@@ -20,6 +20,7 @@ Each example shows:
 ## 🛠️ Setup
 
 npm install
+
 npm run dev
 
 ## 📦 Build
