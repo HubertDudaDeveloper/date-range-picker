@@ -18,14 +18,15 @@ export enum EDatePickerTypes {
   DATE_FROM = 'date-from',
   DATE_TO = 'date-to',
   DATE_FROM_TO = 'date from-to',
+  EMPTY = '',
 }
 
 export enum ENumericDateTypes {
-  YEAR = 'year',
-  QUARTER = 'quarter',
-  MONTH = 'month',
-  WEEK = 'week',
-  DAY = 'day',
-  HOUR = 'hour',
-  MINUTE = 'minute',
+  YEAR = EDatePickerTypes.YEAR,
+  QUARTER = EDatePickerTypes.QUARTER,
+  MONTH = EDatePickerTypes.MONTH,
+  WEEK = EDatePickerTypes.WEEK,
+  DAY = EDatePickerTypes.DAY,
+  HOUR = EDatePickerTypes.HOUR,
+  MINUTE = EDatePickerTypes.MINUTE,
 }

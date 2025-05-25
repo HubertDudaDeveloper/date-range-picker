@@ -1,45 +1,36 @@
-# date-picker
+# 🗓️ DateRangePicker.vue
 
-This template should help get you started developing with Vue 3 in Vite.
+A reusable, customizable Vue 3 component for selecting date ranges or numeric time units. Built with TypeScript, SCSS modules, and tested.
 
-## Recommended IDE Setup
+## ✨ Features
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Supports both numeric and date range modes
+- Fully customizable `allowedTypes`, `disabledTypes`, `min/max`, and `minDate/maxDate`
+- Emits structured JSON output
+- Includes animations, accessibility tags, and styling for clean UI demos
+- Isolated, tested, and documented
 
-## Type Support for `.vue` Imports in TS
+## 🚀 Preview
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+Each example shows:
+- A working instance of the component
+- Live output (JSON)
+- Props used in configuration
 
-## Customize configuration
+## 🛠️ Setup
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
-```
 
-### Type-Check, Compile and Minify for Production
+## 📦 Build
 
-```sh
 npm run build
-```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+## 🧪 Tests
 
-```sh
-npm run test:unit
-```
+Run tests:
 
-### Lint with [ESLint](https://eslint.org/)
+npm run test
 
-```sh
-npm run lint
-```
+## 📄 License
+MIT – free to use for evaluation or learning purposes.

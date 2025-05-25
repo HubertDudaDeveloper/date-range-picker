@@ -12,8 +12,9 @@
 </template>
 
 <script setup lang="ts">
-import DatePicker from '@/components/DatePicker.vue'
+import DatePicker from '@/components/DateRangePicker.vue'
 import CodeExample from '@/components/CodeExample.vue'
+import { type IDatePickerProps } from '@/types/DatePicker';
 
 const props = defineProps<{
   title: string
@@ -35,6 +36,8 @@ const props = defineProps<{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 48px;
     height: 100%;
     width: 100%;
   }

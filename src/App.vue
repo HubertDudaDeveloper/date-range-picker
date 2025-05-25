@@ -10,8 +10,8 @@
 </template>
 
 <script setup lang="ts">
-import ShowcaseView from './components/ShowcaseView.vue'
-import datePickerExamples from './demo/datePickerExamples.ts'
+import ShowcaseView from '@/components/ShowcaseView.vue'
+import datePickerExamples from '@/demo/datePickerExamples.ts'
 
 </script>
 
@@ -20,20 +20,20 @@ import datePickerExamples from './demo/datePickerExamples.ts'
   display: flex;
   flex-direction: column;
 
-  &:nth-child(1) {
-    background-color: paleturquoise;
+  .showcase-view:nth-child(1) {
+    background-color: $color-first-example;
   }
 
-  &:nth-child(2) {
-    background-color: palevioletred;
+  .showcase-view:nth-child(2) {
+    background-color: $color-second-example;
   }
 
-  &:nth-child(3) {
-    background-color: palegoldenrod;
+  .showcase-view:nth-child(3) {
+    background-color: $color-third-example;
   }
 
-  &:nth-child(4) {
-    background-color: palegreen;
+  .showcase-view:nth-child(4) {
+    background-color: $color-forth-example;
   }
 }
 </style>

@@ -8,6 +8,8 @@
 </template>
 
 <script setup lang="ts">
+import { type IDatePickerProps } from '@/types/DatePicker';
+
 const props = defineProps<{
   datePickerProps: IDatePickerProps
 }>()
@@ -21,22 +23,11 @@ const props = defineProps<{
     align-items: center;
     gap: 16px;
     padding: 16px;
-    border: 1px solid black;
     border-radius: 8px;
     min-width: 320px;
     animation: 1 0.5s fade-in;
-    background-color: white;
+    background-color: $color-section-background;
+    filter: $section-shadow;
   }
 
-
-  @keyframes fade-in {
-    0% {
-      opacity: 0;
-      transform: translateY(120px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 </style>
